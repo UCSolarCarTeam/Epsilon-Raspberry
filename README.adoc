@@ -12,3 +12,38 @@ The `xorg.conf` file should be placed in `/etc/X11/`.
 The `config.txt` file is the equivalent of a BIOS on the pi. It contains system configuration parameters. 
 This file is needed on the primary and secondary pi.
 The `config.txt` file should be placed in `/boot/`.
+
+= Instructions to run SetupScript
+
+Ensure to clone Repo to home directory (~) in order for the script to know where to move patch files upon running of the script.
+----
+cd ~
+git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git
+----
+navigate to Epsilon-Raspberry Directory
+----
+cd Epsilon-Raspberry
+----
+run the setupscript BUT make sure you are ready....to be ready:
+
+* leave your computer on all night as the script will take several hours to run.
+* ensure you have consistent, stable internet connection.
+* make sure you don't need to use the pi or move your computer until the script is complete
+----
+./SetupScript
+----
+flash forward to after completion, congratulations, you are almost there.
+navigate to your .bashrc file in your ~home directory and add the following two lines:
+----
+export LD_LIBRARY_PATH=/usr/local/Qt-5.5.1/lib/:/usr/local/lib
+export PATH=/usr/local/Qt-5.5.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local
+----
+save the changes and source the file to initialize the changes
+----
+source ~/.bashrc
+----
+then check where it points, should be "/usr/local/Qt-5.5.1/bin/qmake"
+----
+which qmake
+----
+you should be good to compile sample applications and run them now!
