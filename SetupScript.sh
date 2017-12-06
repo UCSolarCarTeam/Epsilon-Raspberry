@@ -77,23 +77,19 @@ cd ~/opt/qt5/qtmultimedia
 qmake
 make
 make install
-cd ..
-cd qtsvg
+cd ../qtsvg
 qmake
 make
 make install
-cd ..
-cd qtserialport
+cd ../qtserialport
 qmake
 make
 make install
-cd ..
-cd qtwebkit
+cd ../qtwebkit
 qmake
 make
 make install
-cd ..
-cd qttools
+cd ../qttools
 qmake
 make
 make install
