@@ -20,30 +20,30 @@ Ensure to clone Repo to home directory (~) in order for the script to know where
 cd ~
 git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git
 ----
-navigate to Epsilon-Raspberry Directory
+Navigate to Epsilon-Raspberry Directory.
 ----
 cd Epsilon-Raspberry
 ----
-run the setupscript BUT make sure you are ready....to be ready:
+Before running the setup script, make sure that:
 
-* leave your computer on all night as the script will take several hours to run.
-* ensure you have consistent, stable internet connection.
-* make sure you don't need to use the pi or move your computer until the script is complete
+* You have consistent, stable internet connection.
+* You won't need to use the pi or move your computer until the script is complete.
+The script may take several *hours* to run, so be prepared to leave your computer on all night.
 ----
 ./SetupScript
 ----
-flash forward to after completion, congratulations, you are almost there.
-navigate to your .bashrc file in your ~home directory and add the following two lines:
+Flash forward to after completion, CONGRATULATIONS you are almost there, I believe in you.
+Navigate to your .bashrc file in your home (~/) directory and add the following two lines:
 ----
 export LD_LIBRARY_PATH=/usr/local/Qt-5.5.1/lib/:/usr/local/lib
 export PATH=/usr/local/Qt-5.5.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local
 ----
-save the changes and source the file to initialize the changes
+Save the changes and source the file to initialize the changes.
 ----
 source ~/.bashrc
 ----
-then check where it points, should be "/usr/local/Qt-5.5.1/bin/qmake"
+Then check where it points, should be `/usr/local/Qt-5.5.1/bin/qmake`
 ----
 which qmake
 ----
-you should be good to compile sample applications and run them now!
+You should be good to compile sample applications and run them now!

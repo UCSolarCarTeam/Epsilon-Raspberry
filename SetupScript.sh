@@ -22,10 +22,10 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git
 cd Epsilon-Raspberry/primary/
 cp xorg.conf /etc/X11/
 cp config.txt /boot/
-#install rabbit-mq
 
-echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list && sudo apt-get update && sudo apt-get install rabbitmq-server
-sudo apt-get install cmake libboost-dev openssl libssl-dev libblkid-dev e2fslibs-dev libboost-all-dev libaudit-dev software-properties-common build-essential mesa-common-dev libgl1-mesa-dev
+#install rabbit-mq
+echo 'deb http://www.rabbitmq.com/debian/ testing main' | tee /etc/apt/sources.list.d/rabbitmq.list && apt-get update && apt-get install rabbitmq-server
+apt-get install cmake libboost-dev openssl libssl-dev libblkid-dev e2fslibs-dev libboost-all-dev libaudit-dev software-properties-common build-essential mesa-common-dev libgl1-mesa-dev
 
 cd /tmp/
 if ls /usr/local/lib/librabbitmq.* 1> /dev/null 2>&1 ;
@@ -57,7 +57,7 @@ mkdir ~/opt
 cd ~/opt
 git clone git://code.qt.io/qt/qt5.git
 cd ~/Epsilon-Raspberry
-sudo mv fix-initrepo.patch ~/opt
+mv fix-initrepo.patch ~/opt
 cd qt5
 git checkout v5.5.1
 cd ..
@@ -65,31 +65,17 @@ patch -Np1 -d qt5 < fix-initrepo.patch
 cd qt5
 perl init-repository -f
 cd ~/Epsilon-Raspberry
-sudo mv QT_CFLAGS_DBUS.patch ~/opt/qt5
+mv QT_CFLAGS_DBUS.patch ~/opt/qt5
 cd ~/opt/qt5
 patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch
 cd qtbase
 ./configure -v -opengl es2 -device linux-rasp-pi-g''+ -device-option CROSS_COMPILE=/usr/bin/ -opensource 
 -confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs -prefix /usr/local/qt5 &> output
 make |& tee "output.txt"
-sudo make install |& tee "output_make_install.txt"
-cd ~/opt/qt5/qtmultimedia
-qmake
-make
-make install
-cd ../qtsvg
-qmake
-make
-make install
-cd ../qtserialport
-qmake
-make
-make install
-cd ../qtwebkit
-qmake
-make
-make install
-cd ../qttools
-qmake
-make
-make install
+make install |& tee "output_make_install.txt"
+cd ~/opt/qt5/
+(cd qtmultimedia && qmake && make && make install)
+(cd qtsvg && qmake && make && make install)
+(cd qtwebkit && qmake && make && make install)
+(cd qttools && qmake && make && make install)
+(cd qtserialport && qmake && make && make install)
