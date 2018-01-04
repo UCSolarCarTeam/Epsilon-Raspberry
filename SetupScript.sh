@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $USER -ne "root" ]; then
+if [ $EUID -ne 0 ]; then
 	echo "Please run as root user"
 	exit 1
 fi
@@ -15,10 +15,9 @@ if [ $? -ne 0 ]; then
 fi
 
 #configure displays
-cd /opt/ git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git
-cd Epsilon-Raspberry/primary/ 
-cp xorg.conf /etc/X11/ 
-cp config.txt /boot/
+git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git /opt/Epsilon-Raspberry/
+cp /opt/Epsilon-Raspberry/primary/xorg.conf /etc/X11/ 
+cp /opt/Epsilon-Raspberry/primary/config.txt /boot/
 
 #install rabbit-mq
 echo 'deb http://www.rabbitmq.com/debian/ testing main' | tee /etc/apt/sources.list.d/rabbitmq.list && apt-get update && apt-get install rabbitmq-server
@@ -35,17 +34,14 @@ apt-get install cmake \
 	mesa-common-dev \
 	libgl1-mesa-dev
 
-cd /tmp/
-DIR="/usr/local/lib/librabbitmq"
-if [ -n "$DIR" ]; then
+if [ -n "/usr/local/lib/librabbitmq" ]; then
 	echo "Rabbitmq already setup"
-	else
-	git clone https://github.com/alanxz/rabbitmq-c
-	mkdir rabbitmq-c/build && cd rabbitmq-c/build
-	cmake ..
-	cmake --build .
-	cp librabbitmq/*.a /usr/local/lib/
-	cp librabbitmq/*.so* /usr/local/lib/
+else
+	git clone https://github.com/alanxz/rabbitmq-c /tmp/rabbitmq-c/
+	mkdir /tmp/rabbitmq-c/build
+	(cd /tmp/rabbitmq-c/build && cmake .. && cmake --build .)
+	cp /tmp/rabbitmq-c/build/librabbitmq/*.a /usr/local/lib/
+	cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
 fi
 
 #begin QT install
@@ -109,21 +105,34 @@ apt-get install --yes -qq \
 	libssl-dev \
 	libxcb-xinerama0 \
 	libxcb-xinerama0-dev
-mkdir /home/pi/local
-(cd /home/pi/local && git clone git://code.qt.io/qt/qt5.git)
-(cd /home/pi/Epsilon-Raspberry && mv fix-initrepo.patch /home/pi/local)
-(cd /home/pi/local/qt5 && git checkout v5.5.1)
-(cd /home/pi/local && patch -Np1 -d qt5 < fix-initrepo.patch)
-(cd /home/pi/local/qt5 && perl init-repository -f)
-(cd /home/pi/Epsilon-Raspberry && mv QT_CFLAGS_DBUS.patch /home/pi/local/qt5)
-(cd /home/pi/local/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
-cd qtbase
-./configure -v -opengl es2 -device linux-rasp-pi-g''+ -device-option CROSS_COMPILE=/usr/bin/ -opensource 
--confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs -prefix /usr/local/qt5 &> output
+git clone git://code.qt.io/qt/qt5.git /home/pi/
+mv /home/pi/Epsilon-Raspberry/fix-initrepo.patch /home/pi/
+(cd /home/pi/qt5 && git checkout v5.5.1)
+(cd /home/pi/ && patch -Np1 -d qt5 < fix-initrepo.patch)
+(cd /home/pi/qt5 && perl init-repository -f)
+mv /home/pi/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
+(cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
+/home/pi/qt5/qtbaseconfigure \
+	-v \
+	-opengl \
+	es2 \
+	-device \
+	linux-rasp-pi-g''+ \
+	-device-option \
+	CROSS_COMPILE=/usr/bin/ \
+	-opensource \
+	-confirm-license \
+	-optimized-qmake \
+	-reduce-exports \
+	-release \
+	-qt-pcre \
+	-make libs \
+	-prefix \
+	/usr/local/qt5 &> output
 make |& tee "output.txt"
 make install |& tee "output_make_install.txt"
-(cd /home/pi/local/qt5/qtmultimedia && qmake && make && make install)
-(cd /home/pi/local/qt5/qtsvg && qmake && make && make install)
-(cd /home/pi/local/qt5/qtwebkit && qmake && make && make install)
-(cd /home/pi/local/qt5/qttools && qmake && make && make install)
-(cd /home/pi/local/qt5/qtserialport && qmake && make && make install)
+(cd /home/pi/qt5/qtmultimedia && qmake && make && make install)
+(cd /home/pi/qt5/qtsvg && qmake && make && make install)
+(cd /home/pi/qt5/qtwebkit && qmake && make && make install)
+(cd /home/pi/qt5/qttools && qmake && make && make install)
+(cd /home/pi/qt5/qtserialport && qmake && make && make install)
