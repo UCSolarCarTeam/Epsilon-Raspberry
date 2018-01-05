@@ -21,7 +21,7 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git
 ----
 Navigate to Epsilon-Raspberry Directory.
 ----
-cd /Path/To/Directory/Epsilon-Raspberry
+cd /path/to/directory/Epsilon-Raspberry
 ----
 Before running the setup script, ensure:
 
