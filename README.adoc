@@ -1,6 +1,6 @@
 = Epsilon-Raspberry
 
-This Repoxitory contains config files for the Primary and Secondary pi.
+This Repository contains config files for the Primary and Secondary pi.
 
 
 == File Information
@@ -29,7 +29,7 @@ Before running the setup script, ensure:
 * The pi and computer remain stationary for the duration of the script.
 The script may take several *hours* to run, so the computer may be on overnight.
 ----
-./SetupScript
+sudo ./SetupScript
 ----
 Add the following two lines to the `~/.bashrc' file:
 ----
