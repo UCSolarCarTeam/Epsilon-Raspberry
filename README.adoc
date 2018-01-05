@@ -1,6 +1,6 @@
 = Epsilon-Raspberry
 
-This repo contains config files for the primary and secondary pi.
+This Repoxitory contains config files for the Primary and Secondary pi.
 
 
 == File Information
@@ -15,25 +15,23 @@ The `config.txt` file should be placed in `/boot/`.
 
 = Instructions to run SetupScript
 
-Ensure to clone Repo to home directory (~) in order for the script to know where to move patch files upon running of the script.
+Clone the Epsilon-Raspberry Repository to a preferred directory
 ----
-cd ~
 git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git
 ----
 Navigate to Epsilon-Raspberry Directory.
 ----
-cd Epsilon-Raspberry
+cd /Path/To/Directory/Epsilon-Raspberry
 ----
-Before running the setup script, make sure that:
+Before running the setup script, ensure:
 
-* You have consistent, stable internet connection.
-* You won't need to use the pi or move your computer until the script is complete.
-The script may take several *hours* to run, so be prepared to leave your computer on all night.
+* There is consistent, stable internet connection.
+* The pi and computer remain stationary for the duration of the script.
+The script may take several *hours* to run, so the computer may be on overnight.
 ----
 ./SetupScript
 ----
-Flash forward to after completion, CONGRATULATIONS you are almost there, I believe in you.
-Navigate to your .bashrc file in your home (~/) directory and add the following two lines:
+Add the following two lines to the `~/.bashrc' file:
 ----
 export LD_LIBRARY_PATH=/usr/local/Qt-5.5.1/lib/:/usr/local/lib
 export PATH=/usr/local/Qt-5.5.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local
@@ -42,8 +40,8 @@ Save the changes and source the file to initialize the changes.
 ----
 source ~/.bashrc
 ----
-Then check where it points, should be `/usr/local/Qt-5.5.1/bin/qmake`
+Check where it points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
 ----
 which qmake
 ----
-You should be good to compile sample applications and run them now!
+Sample Applications can now be compiled and run.

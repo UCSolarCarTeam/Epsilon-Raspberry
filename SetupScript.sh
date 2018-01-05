@@ -112,23 +112,11 @@ mv /home/pi/Epsilon-Raspberry/fix-initrepo.patch /home/pi/
 (cd /home/pi/qt5 && perl init-repository -f)
 mv /home/pi/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
-/home/pi/qt5/qtbaseconfigure \
-	-v \
-	-opengl \
-	es2 \
-	-device \
-	linux-rasp-pi-g''+ \
-	-device-option \
-	CROSS_COMPILE=/usr/bin/ \
-	-opensource \
-	-confirm-license \
-	-optimized-qmake \
-	-reduce-exports \
-	-release \
-	-qt-pcre \
-	-make libs \
-	-prefix \
-	/usr/local/qt5 &> output
+/home/pi/qt5/qtbaseconfigure -v -opengl es2 \
+	-device linux-rasp-pi-g''+ \
+	-device-option CROSS_COMPILE=/usr/bin/ \
+	-opensource -confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs \
+	-prefix /usr/local/qt5 &> output
 make |& tee "output.txt"
 make install |& tee "output_make_install.txt"
 (cd /home/pi/qt5/qtmultimedia && qmake && make && make install)
