@@ -15,6 +15,9 @@ fi
 #install Epsilon-Hermes
 git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /opt/
 (cd /opt/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src && mkdir Epsilon-Hermes && mv ./src ./Epsilon-Hermes/)
+qmake /opt/Epsilon-Hermes/
+make /opt/Epsilon-Hermes/
+/opt/build/SchulichEpsilonHermes
 
 #install BackupCamera
 git clone https://github.com/UCSolarCarTeam/BackupCamera.git /opt/
@@ -26,6 +29,9 @@ edidparser edid
 #install Dashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /opt/
 /opt/Epsilon-Dashboard/EpsilonDashboardSetup.sh
+qmake /opt/Epsilon-Dashboard/src/
+make /opt/Epsilon-Dashboard/src/
+/opt/build/EpsilonDashboard
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /opt/

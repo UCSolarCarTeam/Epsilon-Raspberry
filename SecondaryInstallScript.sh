@@ -24,8 +24,10 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /opt/
 /opt/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 
 #install Epsilon-Onboard-Media-Control
-cd /usr/local
-git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git
+git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /opt/
+qmake /opt/Epsilon-Onboard-Media-Control/
+make /opt/Epsilon-Onboard-Media-Control/
+/opt/build/OnBoardMediaControl
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /opt/
