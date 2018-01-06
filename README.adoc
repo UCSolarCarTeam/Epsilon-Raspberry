@@ -16,7 +16,7 @@ The `config.txt` file should be placed in `/boot/`.
 = Instructions to run SetupScript
 
 Since the Script clones the Epsilon-Raspberry repo automatically, just download the script file itself to any preferred directory.
-----
+
 Before running the setup script, ensure:
 
 * There is consistent, stable internet connection.
