@@ -21,7 +21,7 @@ cp /opt/Epsilon-Raspberry/primary/config.txt /boot/
 
 #install rabbit-mq
 echo 'deb http://www.rabbitmq.com/debian/ testing main' | tee /etc/apt/sources.list.d/rabbitmq.list && apt-get update && apt-get install rabbitmq-server
-apt-get install cmake \
+apt-get -y install cmake \
 	libboost-dev \
 	openssl \
 	libssl-dev \
