@@ -108,7 +108,7 @@ apt-get install --yes -qq \
 git clone git://code.qt.io/qt/qt5.git /home/pi/qt5
 mv /opt/Epsilon-Raspberry/fix-init.patch /home/pi/qt5
 (cd /home/pi/qt5 && git checkout v5.5.1)
-(cd /home/pi/ && patch -Np1 -d qt5 < fix-init.patch)
+(cd /home/pi/qt5 && patch -Np1 -d . < fix-init.patch)
 (cd /home/pi/qt5 && perl init-repository -f)
 mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
