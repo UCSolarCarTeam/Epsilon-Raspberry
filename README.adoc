@@ -1,6 +1,6 @@
 = Epsilon-Raspberry
 
-This Repository contains config files for the Primary and Secondary pi.
+This repository contains config files for the Primary and Secondary pi.
 
 
 == File Information
@@ -19,7 +19,7 @@ Since the Script clones the Epsilon-Raspberry repo automatically, just download 
 
 Before running the setup script, ensure:
 
-* There is consistent, stable internet connection.
+* There is a consistent, stable internet connection.
 * The pi and computer remain stationary for the duration of the script.
 The script may take several *hours* to run, so the computer may be on overnight.
 ----
@@ -38,4 +38,4 @@ Check where it points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
 ----
 which qmake
 ----
-Sample Applications can now be compiled and run.
+Sample applications can now be compiled and run.
