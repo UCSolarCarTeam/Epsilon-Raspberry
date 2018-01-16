@@ -36,15 +36,12 @@ apt-get -y install cmake \
 	mesa-common-dev \
 	libgl1-mesa-dev
 
-if [ -n "/usr/local/lib/librabbitmq" ]; then
-	echo "Rabbitmq already setup"
-else
-	git clone https://github.com/alanxz/rabbitmq-c /tmp/rabbitmq-c/
-	mkdir /tmp/rabbitmq-c/build
-	(cd /tmp/rabbitmq-c/build && cmake .. && cmake --build .)
-	cp /tmp/rabbitmq-c/build/librabbitmq/*.a /usr/local/lib/
-	cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
-fi
+git clone https://github.com/alanxz/rabbitmq-c /tmp/rabbitmq-c/
+mkdir /tmp/rabbitmq-c/build
+(cd /tmp/rabbitmq-c/build && cmake .. && cmake --build .)
+cp /tmp/rabbitmq-c/build/librabbitmq/*.a /usr/local/lib/
+cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
+
 
 #begin QT install
 apt-get --yes upgrade
@@ -126,3 +123,6 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5/qtwebkit && qmake && make && make install)
 (cd /home/pi/qt5/qttools && qmake && make && make install)
 (cd /home/pi/qt5/qtserialport && qmake && make && make install)
+export PATH=$PATH:/usr/local/Qt-5.5.1/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.5.1/lib:/usr/local/lib
+source ~/.bashrc

@@ -1,6 +1,6 @@
 = Epsilon-Raspberry
 
-This repository contains config files for the Primary and Secondary pi.
+This repository contains config files and setup scripts for the Primary and Secondary pi.
 
 
 == File Information
@@ -25,16 +25,7 @@ The script may take several *hours* to run, so the computer may be on overnight.
 ----
 sudo ./SetupScript
 ----
-Add the following two lines to the `~/.bashrc' file:
-----
-export LD_LIBRARY_PATH=/usr/local/Qt-5.5.1/lib/:/usr/local/lib
-export PATH=/usr/local/Qt-5.5.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local
-----
-Save the changes and source the file to initialize the changes.
-----
-source ~/.bashrc
-----
-Check where it points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
+Check where qmake points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
 ----
 which qmake
 ----
