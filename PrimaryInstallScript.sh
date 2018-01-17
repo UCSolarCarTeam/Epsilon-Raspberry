@@ -18,6 +18,13 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /opt/
 qmake /opt/Epsilon-Hermes/
 make /opt/Epsilon-Hermes/
 /opt/build/SchulichEpsilonHermes
+git clone https://github.com/alanxz/SimpleAmqpClient /tmp/SimpleAmqpClient/
+mkdir /tmp/SimpleAmqpClient/build
+(cd /tmp/SimpleAmqpClient/build && cmake -DRabbitmqc_INCLUDE_DIR=../../rabbitmq-c/librabbitmq -DRabbitmqc_LIBRARY=../../rabbitmq-c/build/librabbitmq ..)
+(cd /tmp/SimpleAmqpClient/build make)
+sudo mkdir /usr/local/include/SimpleAmqpClient
+sudo cp *.so* /usr/local/lib/
+sudo cp ../src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
 
 #install BackupCamera
 git clone https://github.com/UCSolarCarTeam/BackupCamera.git /opt/
