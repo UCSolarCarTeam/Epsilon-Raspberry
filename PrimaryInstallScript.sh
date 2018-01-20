@@ -13,11 +13,10 @@ if [ $? -ne 0 ]; then
 fi
 
 #install Epsilon-Hermes
-git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /opt/Epsilon-Hermes
+git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /opt/Epsilon-Hermes/
 cd /opt/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src && mkdir Epsilon-Hermes && mv ./src ./Epsilon-Hermes/
 qmake /opt/Epsilon-Hermes/
 make /opt/Epsilon-Hermes/
-/opt/build/SchulichEpsilonHermes
 
 git clone https://github.com/alanxz/SimpleAmqpClient /tmp/SimpleAmqpClient/
 mkdir /tmp/SimpleAmqpClient/build
@@ -41,7 +40,6 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /opt/Epsilon-D
 /opt/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 qmake /opt/Epsilon-Dashboard/src/
 make /opt/Epsilon-Dashboard/src/
-/opt/build/EpsilonDashboard
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /opt/Domovoi/

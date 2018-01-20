@@ -24,13 +24,11 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /opt/Epsilon-D
 /opt/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 qmake /opt/Epsilon-Dashboard/src/
 make /opt/Epsilon-Dashboard/src/
-/opt/build/EpsilonDashboard
 
 #install Epsilon-Onboard-Media-Control
 git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /opt/Epsilon-Onboard-Media-Control/
 qmake /opt/Epsilon-Onboard-Media-Control/
 make /opt/Epsilon-Onboard-Media-Control/
-/opt/build/OnBoardMediaControl
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /opt/Domovoi/
