@@ -45,11 +45,15 @@ cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
 
 #begin QT install
 apt-get --yes upgrade
+sudo apt-get build-dep qt4-x11
+sudo apt-get build-dep libqt5gui5
 apt-get install --yes -qq \
 	libfontconfig1-dev \
 	libdbus-1-dev \
 	libfreetype6-dev \
 	libudev-dev \
+	libinput-dev \
+	libts-dev \
 	libicu-dev \
 	libsqlite3-dev \
 	libxslt1-dev \
@@ -110,19 +114,21 @@ mv /opt/Epsilon-Raspberry/fix-init.patch /home/pi/qt5
 (cd /home/pi/qt5 && perl init-repository -f)
 mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
-cd /home/pi/qt5/qtbase && ./configure \
+(cd /home/pi/qt5/qtbase && ./configure \
 	-v -opengl es2 \
 	-device linux-rasp-pi-g''+ \
 	-device-option CROSS_COMPILE=/usr/bin/ \
 	-opensource -confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs \
-	-prefix /home/pi/qt5 |& tee output.txt
-(cd /home/pi/qt5 && make |& tee -a "output.txt")
+	-prefix /home/pi/qt5 |& tee "output_configure.txt")
+(cd /home/pi/qt5 && make |& tee "output_make.txt")
 (cd /home/pi/qt5 && make install |& tee "output_make_install.txt")
 (cd /home/pi/qt5/qtmultimedia && qmake && make && make install)
 (cd /home/pi/qt5/qtsvg && qmake && make && make install)
 (cd /home/pi/qt5/qtwebkit && qmake && make && make install)
 (cd /home/pi/qt5/qttools && qmake && make && make install)
 (cd /home/pi/qt5/qtserialport && qmake && make && make install)
+
+#update Path's with Qt files
 export PATH=$PATH:/usr/local/Qt-5.5.1/bin >> ~/.bashrc
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.5.1/lib:/usr/local/lib >> ~./bashrc
 source ~/.bashrc

@@ -15,7 +15,20 @@ The `config.txt` file should be placed in `/boot/`.
 
 = Instructions to run SetupScript
 
-Since the Script clones the Epsilon-Raspberry repo automatically, just download the script file itself to any preferred directory.
+On the raspberry pi(rpi), run rasp-config, and increase the RAM to 512MB.
+----
+sudo rasp-config
+----
+(rpi)Ensure your raspberry pi is up-to-date:
+----
+sudo rpi-update
+reboot
+----
+(rpi)Open the sources.list file and uncomment the "deb-src" line.
+----
+sudo nano /etc/apt/sources.list
+----
+Back on the PC, since the Script clones the Epsilon-Raspberry repo automatically, just download the script file itself to any preferred directory.
 
 Before running the setup script, ensure:
 
