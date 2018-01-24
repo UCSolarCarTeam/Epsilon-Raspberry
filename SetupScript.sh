@@ -120,8 +120,8 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 	-device-option CROSS_COMPILE=/usr/bin/ \
 	-opensource -confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs \
 	-prefix /home/pi/qt5 |& tee "output_configure.txt")
-(cd /home/pi/qt5 && make |& tee "output_make.txt")
-(cd /home/pi/qt5 && make install |& tee "output_make_install.txt")
+(cd /home/pi/qt5/qtbase && make |& tee "output_make.txt")
+(cd /home/pi/qt5/qtbase && make install |& tee "output_make_install.txt")
 (cd /home/pi/qt5/qtmultimedia && qmake && make && make install)
 (cd /home/pi/qt5/qtsvg && qmake && make && make install)
 (cd /home/pi/qt5/qtwebkit && qmake && make && make install)
