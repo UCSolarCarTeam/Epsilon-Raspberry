@@ -23,6 +23,7 @@ make /opt/Epsilon-Hermes/
 git clone https://github.com/alanxz/SimpleAmqpClient /tmp/SimpleAmqpClient/
 mkdir /tmp/SimpleAmqpClient/build
 (cd /tmp/SimpleAmqpClient/build && cmake \
+	--yes --force \
 	-DRabbitmqc_INCLUDE_DIR=../../rabbitmq-c/librabbitmq \
 	-DRabbitmqc_LIBRARY=../../rabbitmq-c/build/librabbitmq ..)
 (cd /tmp/SimpleAmqpClient/build make)
