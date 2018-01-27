@@ -14,9 +14,9 @@ fi
 
 #install Epsilon-Hermes
 git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-Hermes/
-(cd /home/pi/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src
-&& mkdir Epsilon-Hermes
-&& mv ./src ./Epsilon-Hermes/)
+(cd /home/pi/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src \
+	&& mkdir Epsilon-Hermes \
+	&& mv ./src ./Epsilon-Hermes/)
 qmake /home/pi/Epsilon-Hermes/src/
 make /home/pi/Epsilon-Hermes/src/
 mv /home/pi/build/Epsilon-Hermes /opt/
