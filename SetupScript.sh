@@ -114,14 +114,15 @@ mv /opt/Epsilon-Raspberry/fix-init.patch /home/pi/qt5
 (cd /home/pi/qt5 && perl init-repository -f)
 mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
-/home/pi/qt5/qtbase/configure \
+(cd /home/pi/qt5/qtbase && ./configure \
 	-v -opengl es2 \
+	-qt-xcb \
 	-device linux-rasp-pi-g''+ \
 	-device-option CROSS_COMPILE=/usr/bin/ \
 	-opensource -confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs \
-	-prefix /home/pi/qt5 |& tee "output_configure.txt"
-(cd /home/pi/qt5/qtbase && make |& tee "output_make.txt")
-(cd /home/pi/qt5/qtbase && make install |& tee "output_make_install.txt")
+	-prefix /home/pi/qt5 |& tee "output_configure.txt")
+(cd /home/pi/qt5/qtbase && make -j4 |& tee "output_make.txt")
+(cd /home/pi/qt5/qtbase && make install -j4 |& tee "output_make_install.txt")
 (cd /home/pi/qt5/qtmultimedia && qmake && make && make install)
 (cd /home/pi/qt5/qtsvg && qmake && make && make install)
 (cd /home/pi/qt5/qtwebkit && qmake && make && make install)
@@ -129,6 +130,6 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5/qtserialport && qmake && make && make install)
 
 #update Path's with Qt files
-export PATH=$PATH:/usr/local/Qt-5.5.1/bin >> ~/.bashrc
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.5.1/lib:/usr/local/lib >> ~./bashrc
+echo 'export PATH=$PATH:/usr/local/Qt-5.5.1/bin' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.5.1/lib:/usr/local/lib' >> ~./bashrc
 source ~/.bashrc
