@@ -22,8 +22,7 @@ cp /opt/Epsilon-Raspberry/primary/config.txt /boot/
 #install rabbit-mq
 echo 'deb http://www.rabbitmq.com/debian/ testing main' | tee /etc/apt/sources.list.d/rabbitmq.list
 apt-get update
-apt-get install rabbitmq-server
-apt-get -y install cmake \
+apt-get install -y --force-yes rabbitmq-server cmake \
 	libboost-dev \
 	openssl \
 	libssl-dev \
@@ -123,13 +122,13 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 	-prefix /home/pi/qt5 |& tee "output_configure.txt")
 (cd /home/pi/qt5/qtbase && make -j4 |& tee "output_make.txt")
 (cd /home/pi/qt5/qtbase && make install -j4 |& tee "output_make_install.txt")
-(cd /home/pi/qt5/qtmultimedia && qmake && make && make install)
-(cd /home/pi/qt5/qtsvg && qmake && make && make install)
-(cd /home/pi/qt5/qtwebkit && qmake && make && make install)
-(cd /home/pi/qt5/qttools && qmake && make && make install)
-(cd /home/pi/qt5/qtserialport && qmake && make && make install)
+(cd /home/pi/qt5/qtmultimedia && /home/pi/qt5/qtbase/qmake && make && make install)
+(cd /home/pi/qt5/qtsvg && /home/pi/qt5/qtbase/qmake && make && make install)
+(cd /home/pi/qt5/qtwebkit && /home/pi/qt5/qtbase/qmake && make && make install)
+(cd /home/pi/qt5/qttools && /home/pi/qt5/qtbase/qmake && make && make install)
+(cd /home/pi/qt5/qtserialport && /home/pi/qt5/qtbase/qmake && make && make install)
 
 #update Path's with Qt files
-echo 'export PATH=$PATH:/usr/local/Qt-5.5.1/bin' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.5.1/lib:/usr/local/lib' >> ~./bashrc
+echo 'export PATH=$PATH:/usr/local/Qt-5.5.1/bin' >> /home/pi/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.5.1/lib:/usr/local/lib' >> /home/pi/.bashrc
 source ~/.bashrc
