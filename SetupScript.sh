@@ -22,7 +22,8 @@ cp /opt/Epsilon-Raspberry/primary/config.txt /boot/
 #install rabbit-mq
 echo 'deb http://www.rabbitmq.com/debian/ testing main' | tee /etc/apt/sources.list.d/rabbitmq.list
 apt-get update
-apt-get install -y --force-yes rabbitmq-server cmake \
+apt-get install -y --force-yes rabbitmq-server \
+	cmake \
 	libboost-dev \
 	openssl \
 	libssl-dev \
@@ -43,10 +44,10 @@ cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
 
 
 #begin QT install
-apt-get --yes upgrade
+apt-get -y --force-yes upgrade
 sudo apt-get build-dep qt4-x11
 sudo apt-get build-dep libqt5gui5
-apt-get install --yes -qq \
+apt-get install -y --force-yes -qq \
 	libfontconfig1-dev \
 	libdbus-1-dev \
 	libfreetype6-dev \
