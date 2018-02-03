@@ -121,9 +121,9 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 	-device-option CROSS_COMPILE=/usr/bin/ \
 	-opensource -confirm-license -optimized-qmake -reduce-exports -release -qt-pcre -make libs \
 	-prefix /home/pi/qt5 |& tee "output_configure.txt")
-qtchooser -install qt55 /home/pi/qt5/qtbase/bin/qmake
 (cd /home/pi/qt5/qtbase && make -j4 |& tee "output_make.txt")
 (cd /home/pi/qt5/qtbase && make install -j4 |& tee "output_make_install.txt")
+qtchooser -install qt55 /home/pi/qt5/qtbase/bin/qmake
 (cd /home/pi/qt5/qtmultimedia && /home/pi/qt5/qtbase/qmake && make && make install)
 (cd /home/pi/qt5/qtsvg && /home/pi/qt5/qtbase/qmake && make && make install)
 (cd /home/pi/qt5/qtwebkit && /home/pi/qt5/qtbase/qmake && make && make install)
