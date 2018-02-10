@@ -19,6 +19,18 @@ git clone https://github.com/UCSolarCarTeam/BackupCamera.git /home/pi/BackupCame
 tvservice -d edid
 edidparser edid
 
+#install SimpleAmqpClient
+git clone https://github.com/alanxz/SimpleAmqpClient /tmp/SimpleAmqpClient/
+mkdir /tmp/SimpleAmqpClient/build
+(cd /tmp/SimpleAmqpClient/build && cmake \
+	--yes --force-yes \
+	-DRabbitmqc_INCLUDE_DIR=../../rabbitmq-c/librabbitmq \
+	-DRabbitmqc_LIBRARY=../../rabbitmq-c/build/librabbitmq ..)
+(cd /tmp/SimpleAmqpClient/build make)
+mkdir /usr/local/include/SimpleAmqpClient
+cp *.so* /usr/local/lib/
+cp ../src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
+ldconfig -v
 #install Dashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsilon-Dashboard/
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh

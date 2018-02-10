@@ -12,15 +12,7 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-#install Epsilon-Hermes
-git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-Hermes/
-(cd /home/pi/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src \
-	&& mkdir Epsilon-Hermes \
-	&& mv ./src ./Epsilon-Hermes/)
-qmake /home/pi/Epsilon-Hermes/src/
-make /home/pi/Epsilon-Hermes/src/
-mv /home/pi/build/Epsilon-Hermes /opt/
-
+#install SimpleAmqpClient
 git clone https://github.com/alanxz/SimpleAmqpClient /tmp/SimpleAmqpClient/
 mkdir /tmp/SimpleAmqpClient/build
 (cd /tmp/SimpleAmqpClient/build && cmake \
@@ -31,6 +23,16 @@ mkdir /tmp/SimpleAmqpClient/build
 mkdir /usr/local/include/SimpleAmqpClient
 cp *.so* /usr/local/lib/
 cp ../src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
+ldconfig -v
+
+#install Epsilon-Hermes
+git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-Hermes/
+(cd /home/pi/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src \
+	&& mkdir Epsilon-Hermes \
+	&& mv ./src ./Epsilon-Hermes/)
+qmake /home/pi/Epsilon-Hermes/src/
+make /home/pi/Epsilon-Hermes/src/
+mv /home/pi/build/Epsilon-Hermes /opt/
 
 #install BackupCamera
 git clone https://github.com/UCSolarCarTeam/BackupCamera.git /home/pi/BackupCamera/
