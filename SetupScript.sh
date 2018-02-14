@@ -115,6 +115,7 @@ mv /opt/Epsilon-Raspberry/fix-init.patch /home/pi/qt5
 mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
 (cd /home/pi/qt5/qtbase && ./configure \
+	-no-use-gold-linker \
 	-v -opengl es2 \
 	-qt-xcb \
 	-no-pch \
@@ -124,12 +125,12 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 	-prefix /home/pi/qt5 |& tee "output_configure.txt")
 (cd /home/pi/qt5/qtbase && make -j4 |& tee "output_make.txt")
 (cd /home/pi/qt5/qtbase && make install -j4 |& tee "output_make_install.txt")
-qtchooser -install qt55 /home/pi/qt5/qtbase/bin/qmake
-(cd /home/pi/qt5/qtmultimedia && /home/pi/qt5/qtbase/bin/qmake && make && make install)
-(cd /home/pi/qt5/qtsvg && /home/pi/qt5/qtbase/bin/qmake && make && make install)
-(cd /home/pi/qt5/qtwebkit && /home/pi/qt5/qtbase/bin/qmake && make && make install)
-(cd /home/pi/qt5/qttools && /home/pi/qt5/qtbase/bin/qmake && make && make install)
-(cd /home/pi/qt5/qtserialport && /home/pi/qt5/qtbase/bin/qmake && make && make install)
+qtchooser -install qt55 /home/pi/qt5/bin/qmake
+(cd /home/pi/qt5/qtmultimedia && /home/pi/qt5/bin/qmake && make && make install)
+(cd /home/pi/qt5/qtsvg && /home/pi/qt5/bin/qmake && make && make install)
+(cd /home/pi/qt5/qtwebkit && /home/pi/qt5/bin/qmake && make && make install)
+(cd /home/pi/qt5/qttools && /home/pi/qt5/bin/qmake && make && make install)
+(cd /home/pi/qt5/qtserialport && /home/pi/qt5/bin/qmake && make && make install)
 
 #update Path's with Qt files
 echo 'export PATH=$PATH:/usr/local/Qt-5.5.1/bin' >> /home/pi/.bashrc
