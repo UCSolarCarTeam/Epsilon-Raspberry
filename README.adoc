@@ -50,7 +50,7 @@ Sample applications can now be compiled and run.
 
 This was tested on the `2017-06-21-raspbian-jessie.img' found here:
 http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/
-The lsb_release -a output:
+The `lsb_release -a` output:
 ----
 Distributor ID: Raspbian
 Description: Raspbian GNU/Linux 8.0 (jessie)
