@@ -42,13 +42,13 @@ Check where qmake points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
 ----
 which qmake
 ----
-Reboot the pi the script completed with no errors.
+Reboot the pi if the script completed with no errors.
 ----
 sudo reboot
 ----
 Sample applications can now be compiled and run.
 
-This was tested on the `2017-06-21-raspbian-jessie.img' found here:
+This was tested on the `2017-06-21-raspbian-jessie.img` found here:
 http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/
 The `lsb_release -a` output:
 ----
