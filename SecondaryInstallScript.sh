@@ -16,6 +16,7 @@ fi
 git clone https://github.com/UCSolarCarTeam/BackupCamera.git /home/pi/BackupCamera/
 /home/pi/BackupCamera/Installer/MainInstaller.sh
 /home/pi/BackupCamera/Installer/AutoBootSetup.sh
+(cd /home/pi/BackupCamera && make)
 tvservice -d edid
 edidparser edid
 
@@ -31,18 +32,19 @@ mkdir /usr/local/include/SimpleAmqpClient
 cp *.so* /usr/local/lib/
 cp ../src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
 ldconfig -v
+
 #install Dashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsilon-Dashboard/
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 qmake /home/pi/Epsilon-Dashboard/src/
-make /home/pi/Epsilon-Dashboard/src/
-mv /home/pi/build/Epsilon-Dashboard /opt/
+(cd /home/pi/Epsilon-Dashboard/src/ make)
+mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
 
 #install Epsilon-Onboard-Media-Control
 git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /home/pi/Epsilon-Onboard-Media-Control/
 qmake /home/pi/Epsilon-Onboard-Media-Control/
 make /home/pi/Epsilon-Onboard-Media-Control/
-mv /home/pi/build/Epsilon-Onboard-Media-Control /opt/
+mv /home/pi/build/OnboardMediaControl /opt/
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
