@@ -64,3 +64,7 @@ mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
+mv domovoiStart /etc/init.d #move domovoiStart script to boot location
+mv race.txt /home/pi/Domovoi #move config files to Domovoi repo so domovoi script in domovoiStart knows them
+mv display.txt /home/pi/Domovoi
+#once tests are complete, call reboot
