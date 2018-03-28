@@ -1,0 +1,2 @@
+/opt/EpsilonDashboard
+/opt/SchulichEpsilonHermes
