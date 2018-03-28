@@ -48,3 +48,8 @@ mv /home/pi/build/OnboardMediaControl /opt/
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
+patch -p0 < patchToSecondary	#update the PrimaryDirectory to the secondary directory
+mv PrimaryDomovoi/domovoiStart /etc/init.d #move domovoiStart script to boot location
+mv PrimaryDomovoi/race.txt /home/pi/Domovoi #move config files to Domovoi repo so domovoi script in domovoiStart knows them
+mv PrimaryDomovoi/display.txt /home/pi/Domovoi
+#once tests are complete, call reboot
