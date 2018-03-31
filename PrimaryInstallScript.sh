@@ -66,7 +66,8 @@ mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
 chmod 755 /home/pi/Domovoi/domovoi.py 	#make script executable
 mv PrimaryDomovoi/domovoiStart.sh /etc/init.d #move domovoiStart script to boot location
-update-rc.d /etc/init.d/domovoiStart.sh defaults	#register the script with run-levels
+chmod 755 /etc/init.d/domovoiStart.sh
+update-rc.d domovoiStart.sh defaults	#register the script with run-levels
 mv PrimaryDomovoi/race.txt /home/pi/Domovoi #move config files to Domovoi repo so domovoi script in domovoiStart knows them
 mv PrimaryDomovoi/display.txt /home/pi/Domovoi
 #once tests are complete, call reboot
