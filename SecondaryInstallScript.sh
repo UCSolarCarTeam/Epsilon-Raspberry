@@ -50,8 +50,8 @@ mv /home/pi/build/OnboardMediaControl /opt/
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
 patch -p0 < patchToSecondary	#update the PrimaryDirectory to the secondary directory
 chmod 755 /home/pi/Domovoi/domovoi.py 	#make script executable
-mv PrimaryDomovoi/domovoiStart /etc/init.d #move domovoiStart script to boot location
-update-rd.c /etc/init.d/domovoiStart defaults	#register the script with run-levels
+mv PrimaryDomovoi/domovoiStart.sh /etc/init.d #move domovoiStart script to boot location
+update-rd.c /etc/init.d/domovoiStart.sh defaults	#register the script with run-levels
 mv PrimaryDomovoi/race.txt /home/pi/Domovoi #move config files to Domovoi repo so domovoi script in domovoiStart knows them
 mv PrimaryDomovoi/display.txt /home/pi/Domovoi
 #once tests are complete, call reboot

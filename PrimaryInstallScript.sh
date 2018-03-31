@@ -34,7 +34,7 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-
 mv /home/pi/Epsilon-Hermes/build/SchulichEpsilonHermes /opt/
 
 #install google-test-suite
-git clone https://github.com/google/googletest.git
+git clone https://github.com/google/googletest.git /home/pi/googletest
 (cd /home/pi/googletest/ && g++ -isystem googletest/include/ \
 	-Igoogletest -isystem googlemock/include/ \
 	-Igooglemock -pthread -c googletest/src/gtest-all.cc)
@@ -65,8 +65,8 @@ mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
 chmod 755 /home/pi/Domovoi/domovoi.py 	#make script executable
-mv PrimaryDomovoi/domovoiStart /etc/init.d #move domovoiStart script to boot location
-update-rd.c /etc/init.d/domovoiStart defaults	#register the script with run-levels
+mv PrimaryDomovoi/domovoiStart.sh /etc/init.d #move domovoiStart script to boot location
+update-rd.c /etc/init.d/domovoiStart.sh defaults	#register the script with run-levels
 mv PrimaryDomovoi/race.txt /home/pi/Domovoi #move config files to Domovoi repo so domovoi script in domovoiStart knows them
 mv PrimaryDomovoi/display.txt /home/pi/Domovoi
 #once tests are complete, call reboot
