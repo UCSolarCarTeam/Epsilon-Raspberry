@@ -125,6 +125,8 @@ mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
 	-prefix /home/pi/qt5 |& tee "output_configure.txt")
 (cd /home/pi/qt5/qtbase && make |& tee "output_make.txt")
 (cd /home/pi/qt5/qtbase && make install |& tee "output_make_install.txt")
+mv /usr/bin/qmake /usr/bin/qmake.bak
+rm /usr/bin/qmake
 ln -s /home/pi/qt5/bin/qmake /usr/bin/qmake
 (cd /home/pi/qt5/qtmultimedia && /home/pi/qt5/bin/qmake && make && make install)
 (cd /home/pi/qt5/qtsvg && /home/pi/qt5/bin/qmake && make && make install)
