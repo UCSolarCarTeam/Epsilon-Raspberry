@@ -1,2 +1,2 @@
-/opt/EpsilonDashboard
-/opt/SchulichEpsilonHermes
+/opt/SchulichEpsilonDashboard/EpsilonDashboard
+/opt/SchulichEpsilonHermes/SchulichEpsilonHermes

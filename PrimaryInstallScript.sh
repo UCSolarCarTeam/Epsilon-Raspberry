@@ -25,14 +25,6 @@ cp *.so* /usr/local/lib/
 cp ../src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
 ldconfig -v
 
-#install Epsilon-Hermes
-git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-Hermes/
-(cd /home/pi/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src \
-	&& mkdir Epsilon-Hermes \
-	&& mv ./src ./Epsilon-Hermes/)
-(cd /home/pi/Epsilon-Hermes/src && qmake && make)
-mv /home/pi/Epsilon-Hermes/build/SchulichEpsilonHermes /opt/
-
 #install google-test-suite
 git clone https://github.com/google/googletest.git /home/pi/googletest
 (cd /home/pi/googletest/ && g++ -isystem googletest/include/ \
@@ -41,11 +33,19 @@ git clone https://github.com/google/googletest.git /home/pi/googletest
 (cd googletest/ && g++ -isystem googletest/include/ \
 	-Igoogletest -isystem googlemock/include/ \
 	-Igooglemock -pthread -c googlemock/src/gmock-all.cc)
-(cd /home/pi/googletest && ar -rv libmock.a gtest-all.o gmock-all.o)
-mkdir -p /home/pi/Epsilon-Hermes/build/.lib
-mv /home/pi/googletest/libmock /home/pi/Epsilon-Hermes/build/.lib
+(cd /home/pi/googletest && ar -rv libgmock.a gtest-all.o gmock-all.o)
 cp -r /home/pi/googletest/googlemock/include/gmock /usr/local/include
 cp -r /home/pi/googletest/googletest/include/gtest /usr/local/include
+
+#install Epsilon-Hermes
+git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-Hermes/
+(cd /home/pi/Epsilon-Hermes && cd ../ && mv ./Epsilon-Hermes ./src \
+	&& mkdir Epsilon-Hermes \
+	&& mv ./src ./Epsilon-Hermes/)
+mkdir -p /home/pi/Epsilon-Hermes/build/.lib
+cp /home/pi/googletest/libgmock.a /home/pi/Epsilon-Hermes/build/.lib
+(cd /home/pi/Epsilon-Hermes/src && qmake && make)
+cp -r /home/pi/Epsilon-Hermes/build/ /opt/SchulichEpsilonHermes
 
 #install BackupCamera
 git clone https://github.com/UCSolarCarTeam/BackupCamera.git /home/pi/BackupCamera/
@@ -60,7 +60,7 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsil
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 (cd /home/pi/Epsilon-Dashboard/src/ && qmake)
 (cd /home/pi/Epsilon-Dashboard/src/ && make)
-mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
+cp -r /home/pi/Epsilon-Dashboard/build/ /opt/SchulichEpsilonDashboard
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/

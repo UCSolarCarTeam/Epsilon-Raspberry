@@ -38,13 +38,13 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsil
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 (cd /home/pi/Epsilon-Dashboard/src/ && qmake)
 (cd /home/pi/Epsilon-Dashboard/src/ && make)
-mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
+cp -r /home/pi/Epsilon-Dashboard/build/ /opt/SchulichEpsilonDashboard
 
 #install Epsilon-Onboard-Media-Control
 git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /home/pi/Epsilon-Onboard-Media-Control/
 (cd /home/pi/Epsilon-Onboard-Media-Control/ && qmake)
 (cd /home/pi/Epsilon-Onboard-Media-Control/ && make)
-mv /home/pi/build/OnboardMediaControl /opt/
+cp -r /home/pi/build/ /opt/OnboardMediaControl
 
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/

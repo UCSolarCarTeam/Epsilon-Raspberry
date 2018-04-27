@@ -1,2 +1,2 @@
-/opt/EpsilonDashboard
-/opt/OnboardMediaControl
+/opt/SchulichEpsilonDashboard/EpsilonDashboard
+/opt/OnboardMediaControl/OnboardMediaControl
