@@ -36,13 +36,13 @@ ldconfig -v
 #install Dashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsilon-Dashboard/
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh
-(cd /home/pi/Epsilon-Dashboard/src/ && qmake)
+(cd /home/pi/Epsilon-Dashboard/src/ && /home/pi/qt5/bin/qmake)
 (cd /home/pi/Epsilon-Dashboard/src/ && make)
 cp -r /home/pi/Epsilon-Dashboard/build/ /opt/SchulichEpsilonDashboard
 
 #install Epsilon-Onboard-Media-Control
 git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /home/pi/Epsilon-Onboard-Media-Control/
-(cd /home/pi/Epsilon-Onboard-Media-Control/ && qmake)
+(cd /home/pi/Epsilon-Onboard-Media-Control/ && /home/pi/qt5/bin/qmake)
 (cd /home/pi/Epsilon-Onboard-Media-Control/ && make)
 cp -r /home/pi/build/ /opt/OnboardMediaControl
 
