@@ -30,7 +30,7 @@ git clone https://github.com/google/googletest.git /home/pi/googletest
 (cd /home/pi/googletest/ && g++ -isystem googletest/include/ \
 	-Igoogletest -isystem googlemock/include/ \
 	-Igooglemock -pthread -c googletest/src/gtest-all.cc)
-(cd googletest/ && g++ -isystem googletest/include/ \
+(cd /home/pi/googletest/ && g++ -isystem googletest/include/ \
 	-Igoogletest -isystem googlemock/include/ \
 	-Igooglemock -pthread -c googlemock/src/gmock-all.cc)
 (cd /home/pi/googletest && ar -rv libgmock.a gtest-all.o gmock-all.o)
