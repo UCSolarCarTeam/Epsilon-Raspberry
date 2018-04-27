@@ -12,6 +12,13 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
+#install rabbitmq-c
+git clone https://github.com/alanxz/rabbitmq-c /tmp/rabbitmq-c/
+mkdir /tmp/rabbitmq-c/build
+(cd /tmp/rabbitmq-c/build && cmake .. && cmake --build .)
+cp /tmp/rabbitmq-c/build/librabbitmq/*.a /usr/local/lib/
+cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
+
 #install SimpleAmqpClient
 git clone https://github.com/alanxz/SimpleAmqpClient /tmp/SimpleAmqpClient/
 mkdir /tmp/SimpleAmqpClient/build
