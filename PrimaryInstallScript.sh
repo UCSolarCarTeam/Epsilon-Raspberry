@@ -58,8 +58,8 @@ edidparser edid
 #install Dashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsilon-Dashboard/
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh
-qmake /home/pi/Epsilon-Dashboard/src/
-(cd /home/pi/Epsilon-Dashboard/src/ make)
+(cd /home/pi/Epsilon-Dashboard/src/ && qmake)
+(cd /home/pi/Epsilon-Dashboard/src/ && make)
 mv /home/pi/Epsilon-Dashboard/build/EpsilonDashboard /opt/
 
 #install Domovoi
