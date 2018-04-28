@@ -29,7 +29,7 @@ mkdir /tmp/SimpleAmqpClient/build
 (cd /tmp/SimpleAmqpClient/build && make)
 mkdir /usr/local/include/SimpleAmqpClient
 cp *.so* /usr/local/lib/
-cp ../src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
+cp /tmp/SimpleAmqpClient/src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
 ldconfig -v
 
 #install google-test-suite
