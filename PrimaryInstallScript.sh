@@ -28,7 +28,7 @@ mkdir /tmp/SimpleAmqpClient/build
 	-DRabbitmqc_LIBRARY=../../rabbitmq-c/build/librabbitmq ..)
 (cd /tmp/SimpleAmqpClient/build && make)
 mkdir /usr/local/include/SimpleAmqpClient
-cp *.so* /usr/local/lib/
+cp /tmp/SimpleAmqpClient/build/*.so* /usr/local/lib/
 cp /tmp/SimpleAmqpClient/src/SimpleAmqpClient/*.h /usr/local/include/SimpleAmqpClient
 ldconfig -v
 
