@@ -51,7 +51,9 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-
 	&& mv ./src ./Epsilon-Hermes/)
 mkdir -p /home/pi/Epsilon-Hermes/build/.lib
 cp /home/pi/googletest/libgmock.a /home/pi/Epsilon-Hermes/build/.lib
-(cd /home/pi/Epsilon-Hermes/src && /home/pi/qt5/bin/qmake && make)
+(cd /home/pi/Epsilon-Hermes/src && /home/pi/qt5/bin/qmake && make check)
+mv /home/pi/Epsilon-Hermes/src/config.ini.example /home/pi/Epsilon-Hermes/build
+mv /home/pi/Epsilon-Hermes/build/config.ini.example /home/pi/Epsilon-Hermes/build/config.ini 
 cp -r /home/pi/Epsilon-Hermes/build/ /opt/SchulichEpsilonHermes
 
 #install BackupCamera
