@@ -52,8 +52,8 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Hermes.git /home/pi/Epsilon-
 mkdir -p /home/pi/Epsilon-Hermes/build/.lib
 cp /home/pi/googletest/libgmock.a /home/pi/Epsilon-Hermes/build/.lib
 (cd /home/pi/Epsilon-Hermes/src && /home/pi/qt5/bin/qmake && make check)
-mv /home/pi/Epsilon-Hermes/src/config.ini.example /home/pi/Epsilon-Hermes/build
-mv /home/pi/Epsilon-Hermes/build/config.ini.example /home/pi/Epsilon-Hermes/build/config.ini 
+mv /home/pi/Epsilon-Hermes/src/config.ini /home/pi/Epsilon-Hermes/build
+mkdir /home/pi/Epsilon-Hermes/build/log
 cp -r /home/pi/Epsilon-Hermes/build/ /opt/SchulichEpsilonHermes
 
 #install BackupCamera
@@ -69,6 +69,7 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsil
 /home/pi/Epsilon-Dashboard/EpsilonDashboardSetup.sh
 (cd /home/pi/Epsilon-Dashboard/src/ && /home/pi/qt5/bin/qmake)
 (cd /home/pi/Epsilon-Dashboard/src/ && make)
+mv /home/pi/Epsilon-Dashboard/src/config.ini /home/pi/Epsilon-Dashboard/build
 cp -r /home/pi/Epsilon-Dashboard/build/ /opt/SchulichEpsilonDashboard
 
 #install Domovoi
