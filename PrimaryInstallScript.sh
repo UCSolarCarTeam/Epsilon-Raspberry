@@ -61,8 +61,7 @@ git clone https://github.com/UCSolarCarTeam/BackupCamera.git /home/pi/BackupCame
 /home/pi/BackupCamera/Installer/MainInstaller.sh
 /home/pi/BackupCamera/Installer/AutoBootSetup.sh
 (cd /home/pi/BackupCamera && make)
-tvservice -d edid
-edidparser edid
+mkdir /opt/SchulichBackupCamera/ && cp /home/pi/BackupCamera/BackupCamera /opt/SchulichBackupCamera/
 
 #install Dashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Dashboard.git /home/pi/Epsilon-Dashboard/
