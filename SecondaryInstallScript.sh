@@ -50,6 +50,7 @@ cp -r /home/pi/Epsilon-Dashboard/build/ /opt/SchulichEpsilonDashboard
 git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /home/pi/Epsilon-Onboard-Media-Control/
 (cd /home/pi/Epsilon-Onboard-Media-Control/ && /home/pi/qt5/bin/qmake)
 (cd /home/pi/Epsilon-Onboard-Media-Control/ && make)
+mv /home/pi/Epsilon-Dashboard/src/config.ini /home/pi/Epsilon-Dashboard/build
 cp -r /home/pi/build/ /opt/OnboardMediaControl
 
 #install Domovoi

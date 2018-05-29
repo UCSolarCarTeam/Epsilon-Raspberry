@@ -11,4 +11,4 @@
 ### END INIT INFO
 
 #note, if can read the ip, can use conditional statement to run domovoi
-(sudo cd /home/pi/Domovoi && ./domovoi.py primary)
+(cd /home/pi/Domovoi && sudo ./domovoi.py primary)
