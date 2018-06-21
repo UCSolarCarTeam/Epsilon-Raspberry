@@ -1,4 +1,6 @@
+# Set framebuffer depth so both screens have the same depth, and keep Xinerama happy
 framebuffer_depth=16
+
 # uncomment if you get no picture on HDMI for a default "safe" mode
 #hdmi_safe=0
 
