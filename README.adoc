@@ -1,0 +1,59 @@
+= Epsilon-Raspberry
+
+This repository contains config files and setup scripts for the Primary and Secondary pi.
+
+
+== File Information
+
+The `xorg.conf` tells the Xserver how to layout the video output from the pi onto the screen. 
+This file is only needed on the primary pi.
+The `xorg.conf` file should be placed in `/etc/X11/`.
+
+The `config.txt` file is the equivalent of a BIOS on the pi. It contains system configuration parameters. 
+This file is needed on the primary and secondary pi.
+The `config.txt` file should be placed in `/boot/`.
+
+= Instructions to run SetupScript
+
+On the raspberry pi, run raspi-config, and increase the RAM to 512MB.
+----
+sudo raspi-config
+----
+Ensure your raspberry pi is up-to-date:
+----
+sudo rpi-update
+reboot
+----
+Open the sources.list file and uncomment the "deb-src" line.
+----
+sudo nano /etc/apt/sources.list
+----
+Since the script clones the Epsilon-Raspberry repo automatically, just download the script file itself to any preferred directory.
+
+Before running the setup script, ensure:
+
+* There is a consistent, stable internet connection.
+* The pi and computer remain stationary for the duration of the script.
+The script may take several *hours* to run, so the computer may be on overnight.
+----
+sudo ./SetupScript
+----
+Check where qmake points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
+----
+which qmake
+----
+Reboot the pi if the script completed with no errors.
+----
+sudo reboot
+----
+Sample applications can now be compiled and run.
+
+This was tested on the `2017-06-21-raspbian-jessie.img` found here:
+http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/
+The `lsb_release -a` output:
+----
+Distributor ID: Raspbian
+Description: Raspbian GNU/Linux 8.0 (jessie)
+Release: 8.0
+Codename: jessie
+----
