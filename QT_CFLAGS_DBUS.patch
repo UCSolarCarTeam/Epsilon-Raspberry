@@ -1,0 +1,36 @@
+--- qtbase/configure   2017-11-18 19:47:31.725676029 +0000
++++ qtbase/configure   2017-11-18 20:00:20.690049347 +0000
+@@ -812,12 +812,19 @@
+ QT_LFLAGS_TDS=
+ 
+ # flags for libdbus-1
+-QT_CFLAGS_DBUS=
+-QT_LIBS_DBUS=
++QT_CFLAGS_DBUS="-I/usr/include/dbus-1.0/ -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include/"
++QT_LIBS_DBUS=-ldbus-1
+ 
+ # flags for Glib (X11 only)
+-QT_CFLAGS_GLIB=
+-QT_LIBS_GLIB=
++QT_CFLAGS_GLIB="-I/usr/include/glib-2.0/ -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include/"
++QT_LIBS_GLIB=-lglib-2.0
++
++QT_CFLAGS_PULSEAUDIO="-I/usr/include/glib-2.0/ -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include/"
++QT_LIBS_PULSEAUDIO="-lpulse -lpulse-mainloop-glib"
++
++# flags for GStreamer (X11 only)
++QT_CFLAGS_GSTREAMER="-I/usr/include/gstreamer-0.10/ -I/usr/include/glib-2.0/ -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include/ -I/usr/include/libxml2/"
++
+ 
+ # default qpa platform
+ QT_QPA_DEFAULT_PLATFORM=
+@@ -5225,7 +5232,7 @@
+         QT_CFLAGS_FONTCONFIG=`$PKG_CONFIG --cflags fontconfig --cflags freetype2 2>/dev/null`
+         QT_LIBS_FONTCONFIG=`$PKG_CONFIG --libs fontconfig --libs freetype2 2>/dev/null`
+     else
+-        QT_CFLAGS_FONTCONFIG=
++        QT_CFLAGS_FONTCONFIG=-I/usr/include/freetype2/
+         QT_LIBS_FONTCONFIG="-lfreetype -lfontconfig"
+     fi
+     if compileTest unix/fontconfig "FontConfig" $QT_CFLAGS_FONTCONFIG $QT_LIBS_FONTCONFIG; then
+
