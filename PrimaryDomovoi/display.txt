@@ -1,2 +1,2 @@
 /opt/SchulichEpsilonHermes/SchulichEpsilonHermes
-/opt/SchulichEpsilonDashboard/EpsilonDashboard
+/opt/SchulichEpsilonDashboard/EpsilonDashboard -platform xcb
