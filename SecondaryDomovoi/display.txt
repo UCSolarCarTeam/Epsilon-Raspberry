@@ -1,2 +1,2 @@
-/opt/SchulichEpsilonDashboard/EpsilonDashboard
-/opt/OnboardMediaControl/OnboardMediaControl
+/opt/SchulichEpsilonDashboard/EpsilonDashboard -platform xcb
+/opt/OnboardMediaControl/OnboardMediaControl -platform xcb
