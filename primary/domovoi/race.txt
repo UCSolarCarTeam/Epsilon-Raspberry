@@ -1,3 +1,3 @@
 /opt/SchulichEpsilonHermes/SchulichEpsilonHermes
 /opt/SchulichEpsilonDashboard/EpsilonDashboard -r
-/opt/SchulichBackupCamera/BackupCamera 100 100 100 100 100 100
+/opt/SchulichBackupCamera/BackupCamera 100 100 100 100 1024 768
