@@ -13,6 +13,9 @@ The `config.txt` file is the equivalent of a BIOS on the pi. It contains system 
 This file is needed on the primary and secondary pi.
 The `config.txt` file should be placed in `/boot/`.
 
+The `rabbitmq.config` file is needed for communication between the two pis.
+This file is should be placed in `/etc/rabbitmq/`
+
 = Instructions to run SetupScript
 
 On the raspberry pi, run raspi-config, and increase the RAM to 512MB.
