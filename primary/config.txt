@@ -1,5 +1,8 @@
+# Set framebuffer depth so both screens have the same depth, and keep Xinerama happy
+framebuffer_depth=16
+
 # uncomment if you get no picture on HDMI for a default "safe" mode
-#hdmi_safe=1
+#hdmi_safe=0
 
 # uncomment this if your display has a black border of unused pixels visible
 # and your display can output without overscan
@@ -18,12 +21,12 @@
 #framebuffer_height=720
 
 # uncomment if hdmi display is not detected and composite is being output
-hdmi_force_hotplug=1
+#hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (here we are forcing 800x480!)
 hdmi_group=2
-hdmi_mode=1
-hdmi_mode=87
+hdmi_mode=4
+# hdmi_mode=81
 hdmi_cvt 800 480 60 6 0 0 0
 
 # uncomment to force a HDMI mode rather than DVI. This can make audio work in
@@ -41,3 +44,4 @@ hdmi_cvt 800 480 60 6 0 0 0
 #arm_freq=800
 
 # for more options see http://elinux.org/RPi_config.txt
+gpu_mem=256

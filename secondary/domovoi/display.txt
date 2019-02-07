@@ -1,0 +1,3 @@
+/home/pi/Desktop/Epsilon-Dashboard/build/EpsilonDashboard -d -platform xcb
+/home/pi/Desktop/BackupCamera/BackupCamera 0 0 683 384 1024 768
+/home/pi/Desktop/Epsilon-Onboard-Media-Control/build/OnboardMediaControl -platform xcb

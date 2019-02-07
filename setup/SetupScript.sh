@@ -19,10 +19,24 @@ git clone https://github.com/UCSolarCarTeam/Epsilon-Raspberry.git /opt/Epsilon-R
 cp /opt/Epsilon-Raspberry/primary/xorg.conf /etc/X11/ 
 cp /opt/Epsilon-Raspberry/primary/config.txt /boot/
 
-#install rabbit-mq
-echo 'deb http://www.rabbitmq.com/debian/ testing main' | tee /etc/apt/sources.list.d/rabbitmq.list
-apt-get update
-apt-get install -y --force-yes rabbitmq-server \
+#Install rabbitmq & googletest
+git clone https://github.com/UCSolarCarTeam/Development-Resources.git /tmp/Development-Resources/
+(
+	cd /tmp/Development-Resources/InstallScripts 
+	&& ./rabbitmq-setup.sh
+	&& ./googletest-setup.sh
+)
+
+#begin QT install
+apt-get -y --force-yes upgrade
+apt-get build-dep qt4-x11
+apt-get build-dep libqt5gui5
+apt-get install -y --force-yes -qq \
+	libfontconfig1-dev \
+	libdbus-1-dev \
+	libfreetype6-dev \
+	libudev-dev \
+	libinput-dev \
 	cmake \
 	libboost-dev \
 	openssl \
@@ -35,24 +49,6 @@ apt-get install -y --force-yes rabbitmq-server \
 	build-essential \
 	mesa-common-dev \
 	libgl1-mesa-dev
-
-git clone https://github.com/alanxz/rabbitmq-c /tmp/rabbitmq-c/
-mkdir /tmp/rabbitmq-c/build
-(cd /tmp/rabbitmq-c/build && cmake .. && cmake --build .)
-cp /tmp/rabbitmq-c/build/librabbitmq/*.a /usr/local/lib/
-cp /tmp/rabbitmq-c/build/librabbitmq/*.so* /usr/local/lib/
-
-
-#begin QT install
-apt-get -y --force-yes upgrade
-sudo apt-get build-dep qt4-x11
-sudo apt-get build-dep libqt5gui5
-apt-get install -y --force-yes -qq \
-	libfontconfig1-dev \
-	libdbus-1-dev \
-	libfreetype6-dev \
-	libudev-dev \
-	libinput-dev \
 	libts-dev \
 	libicu-dev \
 	libsqlite3-dev \
@@ -108,11 +104,11 @@ apt-get install -y --force-yes -qq \
 	libxcb-xinerama0 \
 	libxcb-xinerama0-dev
 git clone git://code.qt.io/qt/qt5.git /home/pi/qt5
-mv /opt/Epsilon-Raspberry/fix-init.patch /home/pi/qt5
+cp /opt/Epsilon-Raspberry/setup/fix-init.patch /home/pi/qt5
 (cd /home/pi/qt5 && git checkout v5.5.1)
 (cd /home/pi/qt5 && patch -Np1 -d . < fix-init.patch)
 (cd /home/pi/qt5 && perl init-repository -f)
-mv /opt/Epsilon-Raspberry/QT_CFLAGS_DBUS.patch /home/pi/qt5
+cp /opt/Epsilon-Raspberry/setup/QT_CFLAGS_DBUS.patch /home/pi/qt5
 (cd /home/pi/qt5 && patch -Np1 -d qtbase < QT_CFLAGS_DBUS.patch)
 (cd /home/pi/qt5/qtbase && ./configure \
 	-no-use-gold-linker \
