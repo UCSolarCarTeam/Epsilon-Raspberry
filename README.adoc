@@ -57,3 +57,20 @@ Description: Raspbian GNU/Linux 8.0 (jessie)
 Release: 8.0
 Codename: jessie
 ----
+
+= Ways to Interface with the Pi
+
+* Manually with a screen, keyboard, and mouse.
+* `ssh` - opens a terminal to the pi through a local network (such as a mobile hotspot, no data needed)
+* `vnc` - Opens a remote desktop connection to the Pi, showing the contents of the screen.
+
+== Login Information
+* Primary Pi Username: `primarypi.local`
+* Secondary Pi Username: `secondarypi.local`
+* Contact the software manager for the pi passwords 
+
+= Running Programs on Startup
+
+The `Startup.sh` scripts are currently set to run from `~/.profile`.
+
+A current limitation of this is that on the primary pi, Xinerama will consider the two screens as two "logins", and execute the `~/.profile` commands twice.
