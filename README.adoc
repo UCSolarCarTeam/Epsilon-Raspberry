@@ -16,6 +16,10 @@ The `config.txt` file should be placed in `/boot/`.
 The `rabbitmq.config` file is needed for communication between the two pis.
 This file is should be placed in `/etc/rabbitmq/`
 
+The `.desktop` files will be run on startup. 
+It will run the startup scripts to run domovoi.
+These files should be placed in `/home/pi/.config/autostart/`
+
 = Instructions to run SetupScript
 
 On the raspberry pi, run raspi-config, and increase the RAM to 512MB.
