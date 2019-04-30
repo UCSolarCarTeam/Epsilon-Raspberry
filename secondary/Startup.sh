@@ -1,9 +1,8 @@
 #!/bin/sh
 if pgrep -l "Epsilon" > /dev/null
 then
-	echo "Programs are already running"
+	echo "running"
 else
-	sleep 5
-	echo "Starting Programs"
-	(cd /home/pi/Desktop/Epsilon-Domovoi && sudo ./domovoi.py secondary)
+	echo "Starting"
+	(cd /home/pi/Documents/SolarCar/Epsilon-Domovoi && sudo -E ./domovoi.py secondary)
 fi
