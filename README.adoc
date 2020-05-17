@@ -20,50 +20,9 @@ The `.desktop` files will be run on startup.
 It will run the startup scripts to run domovoi.
 These files should be placed in `/home/pi/.config/autostart/`
 
-= Instructions to run SetupScript
+= Setting Up Cross Compilation
 
-On the raspberry pi, run raspi-config, and increase the RAM to 512MB.
-----
-sudo raspi-config
-----
-Ensure your raspberry pi is up-to-date:
-----
-sudo rpi-update
-reboot
-----
-Open the sources.list file and uncomment the "deb-src" line.
-----
-sudo nano /etc/apt/sources.list
-----
-Since the script clones the Epsilon-Raspberry repo automatically, just download the script file itself to any preferred directory.
-
-Before running the setup script, ensure:
-
-* There is a consistent, stable internet connection.
-* The pi and computer remain stationary for the duration of the script.
-The script may take several *hours* to run, so the computer may be on overnight.
-----
-sudo ./SetupScript
-----
-Check where qmake points, ideally located in `/usr/local/Qt-5.5.1/bin/qmake`
-----
-which qmake
-----
-Reboot the pi if the script completed with no errors.
-----
-sudo reboot
-----
-Sample applications can now be compiled and run.
-
-This was tested on the `2017-06-21-raspbian-jessie.img` found here:
-http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/
-The `lsb_release -a` output:
-----
-Distributor ID: Raspbian
-Description: Raspbian GNU/Linux 8.0 (jessie)
-Release: 8.0
-Codename: jessie
-----
+See the https://github.com/UCSolarCarTeam/Epsilon-Raspberry/blob/master/cross-compile/README.adoc[cross compilation setup guide] for instructions on how to setup cross compilation.
 
 = Ways to Interface with the Pi
 
