@@ -14,13 +14,6 @@ fi
 
 ../InstallCommonPrograms.sh
 
-#install Epsilon-Onboard-Media-Control
-git clone https://github.com/UCSolarCarTeam/Epsilon-Onboard-Media-Control.git /home/pi/Epsilon-Onboard-Media-Control/
-(cd /home/pi/Epsilon-Onboard-Media-Control/ && /home/pi/qt5/bin/qmake)
-(cd /home/pi/Epsilon-Onboard-Media-Control/ && make)
-cp /home/pi/Epsilon-Dashboard/src/config.ini /home/pi/Epsilon-Dashboard/build
-cp -r /home/pi/build/ /opt/OnboardMediaControl
-
 #install Domovoi
 git clone https://github.com/UCSolarCarTeam/Epsilon-Domovoi.git /home/pi/Domovoi/
 chmod 755 /home/pi/Domovoi/domovoi.py 	#make script executable
