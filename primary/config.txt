@@ -1,3 +1,16 @@
+# Disable rainbow splash
+disable_splash=1
+
+#overclock the SD card
+dtoverlay=sdtweak.overclock_50=100
+
+boot_delay=0
+
+force_turbo=1
+
+#Disable Bluetooh
+dtoverlay=pi3-disable-bt
+
 framebuffer_depth=16
 
 hdmi_cvt=800 480 60 6
