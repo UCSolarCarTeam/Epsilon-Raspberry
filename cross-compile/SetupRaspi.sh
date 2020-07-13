@@ -22,7 +22,28 @@ apt-get install -y \
         libinput-dev \
         libts-dev \
         libxcb-xinerama0-dev \
-        libxcb-xinerama0
+        libxcb-xinerama0 \
+        libgstreamer0.10-dev \
+        gstreamer1.0-alsa \
+        gstreamer1.0-doc \
+        gstreamer1.0-libav \
+        gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-base \
+        gstreamer1.0-plugins-base-apps \
+        gstreamer1.0-plugins-base-dbg \
+        gstreamer1.0-plugins-base-doc \
+        gstreamer1.0-tools \
+        gstreamer1.0-x \
+        libgstreamer1.0-0 \
+        libgstreamer1.0-dev \
+        gstreamer1.0-omx \
+        gstreamer1.0-omx-rpi \
+        gstreamer1.0-omx-rpi-config \
+        gstreamer1.0-plugins-good \
+        libgstreamer-plugins-base0.10-0  \
+        libgstreamer-plugins-base0.10-dev \
+        libgstreamer-plugins-base1.0-dev \
+        gstreamer-tools \
 
 mkdir -p /usr/local/qt5pi
 chown pi:pi /usr/local/qt5pi
