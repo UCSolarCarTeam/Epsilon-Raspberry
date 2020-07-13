@@ -20,6 +20,16 @@ The `.desktop` files will be run on startup.
 It will run the startup scripts to run domovoi.
 These files should be placed in `/home/pi/.config/autostart/`
 
+The `.service` files will be run on startup.
+To activate, place these files in `/home/pi/.config/systemd/user/`, then run:
+
+```
+    systemctl --user daemon-reload
+    systemctl --user enable <service-name>
+```
+Where `<service-name>` is the name of the service you want to add.
+Make sure the programs run by the service can be found.
+
 = Setting Up Cross Compilation
 
 See the https://github.com/UCSolarCarTeam/Epsilon-Raspberry/blob/master/cross-compile/README.adoc[cross compilation setup guide] for instructions on how to setup cross compilation.
