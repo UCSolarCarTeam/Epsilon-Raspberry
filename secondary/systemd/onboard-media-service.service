@@ -1,0 +1,10 @@
+ [Unit]
+ Description=Start Onboard Media Player
+ After=graphical.target
+
+ [Service]
+ Type=idle
+ ExecStart=/opt/SchulichOnboardMediaPlayer/OnboardMediaControl
+
+ [Install]
+ WantedBy=default.target
