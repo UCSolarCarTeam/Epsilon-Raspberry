@@ -1,0 +1,10 @@
+ [Unit]
+ Description=Start Dashboard
+ After=graphical.target
+
+ [Service]
+ Type=idle
+ ExecStart=/opt/SchulichBackupCamera/StartBackupCamera.sh
+
+ [Install]
+ WantedBy=default.target

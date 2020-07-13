@@ -1,0 +1,10 @@
+ [Unit]
+ Description=Start Hermes
+ After=graphical.target
+
+ [Service]
+ Type=idle
+ ExecStart=/opt/SchulichEpsilonHermes/SchulichEpsilonHermes
+
+ [Install]
+ WantedBy=default.target
