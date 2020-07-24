@@ -44,9 +44,12 @@ apt-get install -y \
         libgstreamer-plugins-base0.10-dev \
         libgstreamer-plugins-base1.0-dev \
         gstreamer-tools \
+        rabbitmq-server \
 
 mkdir -p /usr/local/qt5pi
-chown pi:pi /usr/local/qt5pi
+chown -R pi:pi /usr/local/qt5pi
+chown -R pi:pi /usr/local/include
+chown -R pi:pi /usr/local/lib
 
 # Later versions of raspbian use a differently named EGL and GLES libraries
 # This will add links to point to the correct libraries in /opt/vc/lib/
@@ -70,5 +73,8 @@ ln -s /opt/vc/lib/libGLESv2.so $LIBGLES_LIBRARY
 ln -s /opt/vc/lib/libEGL.so /opt/vc/lib/libEGL.so.1
 ln -s /opt/vc/lib/libGLESv2.so /opt/vc/lib/libGLESv2.so.2
 
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/qt5pi/lib' >> /home/pi/.bashrc
+if ! grep "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/qt5pi/lib:/usr/local/lib" /home/pi/.bashrc; then
+        echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/qt5pi:/usr/local/lib" >> /home/pi/.bashrc
+fi
+
 echo "Done!"
