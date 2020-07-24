@@ -111,6 +111,18 @@ echo "Making QT, sit back and relax!"
 (cd qt-everywhere-src-5.12.5 && make -j4 |& tee "output_make.txt")
 (cd qt-everywhere-src-5.12.5 && make install -j4 |& tee "output_make_install.txt")
 
+QMAKE=~/raspi/qt5/bin/qmake
+
+echo "Making QT SerialPort"
+(cd qt-everywhere-src-5.12.5/qtserialport && $QMAKE .)
+(cd qt-everywhere-src-5.12.5/qtserialport && make -j4 |& tee "output_qtserialport_make.txt")
+(cd qt-everywhere-src-5.12.5/qtserialport && make install -j4 |& tee "output_qtserialport_make_install.txt")
+
+echo "Making QT Multimedia"
+(cd qt-everywhere-src-5.12.5/qtmultimedia && $QMAKE .)
+(cd qt-everywhere-src-5.12.5/qtmultimedia && make -j4 |& tee "output_qtmultimedia_make.txt")
+(cd qt-everywhere-src-5.12.5/qtmultimedia && make install -j4 |& tee "output_qtmultimedia_make_install.txt")
+
 echo "Deploying qt5pi to raspberry pi..."
 rsync -avz qt5pi $RPI_USER@$RPI_ADDRESS:/usr/local
 
