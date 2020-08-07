@@ -73,8 +73,12 @@ ln -s /opt/vc/lib/libGLESv2.so $LIBGLES_LIBRARY
 ln -s /opt/vc/lib/libEGL.so /opt/vc/lib/libEGL.so.1
 ln -s /opt/vc/lib/libGLESv2.so /opt/vc/lib/libGLESv2.so.2
 
-if ! grep "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/qt5pi/lib:/usr/local/lib" /home/pi/.bashrc; then
-        echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/qt5pi:/usr/local/lib" >> /home/pi/.bashrc
+ln -s /opt/vc/lib/libbrcmEGL.so /opt/vc/lib/libEGL.so
+ln -s /opt/vc/lib/libbrcmGLESv2.so /opt/vc/lib/libGLESv2.so
+
+SET_LD_LIBRARY_PATH="export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/qt5pi/lib:/usr/local/lib"
+if ! grep "$SET_LD_LIBRARY_PATH" /home/pi/.bashrc; then
+        echo $SET_LD_LIBRARY_PATH >> /home/pi/.bashrc
 fi
 
 echo "Done!"
