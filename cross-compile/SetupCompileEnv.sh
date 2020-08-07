@@ -58,9 +58,6 @@ echo "OK"
 echo "Creating Sysroot at ~/raspi"
 mkdir -p ~/raspi
 cd ~/raspi
-if [ ! -d ~/raspi/tools ]; then
-    git clone https://github.com/raspberrypi/tools
-fi
 mkdir -p sysroot sysroot/usr sysroot/opt
 
 echo "Syncing with raspberry pi"
@@ -70,19 +67,19 @@ rsync -avz $RPI_USER@$RPI_ADDRESS:/usr/lib sysroot/usr
 rsync -avz $RPI_USER@$RPI_ADDRESS:/opt/vc sysroot/opt
 
 if [ ! -f ~/raspi/qt-everywhere-src-5.12.5.tar.xz ]; then
-    wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py
+    wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py || exit 1
+    chmod +x sysroot-relativelinks.py
 fi
-chmod +x sysroot-relativelinks.py
-./sysroot-relativelinks.py sysroot
+./sysroot-relativelinks.py sysroot || exit 1
 
 
 if [ ! -d ~/raspi/qt-everywhere-src-5.12.5 ]; then
     if [ ! -f ~/raspi/qt-everywhere-src-5.12.5.tar.xz ]; then
         echo "Downloading QT 5.12.5..."
-        wget http://download.qt.io/official_releases/qt/5.12/5.12.5/single/qt-everywhere-src-5.12.5.tar.xz
+        wget http://download.qt.io/official_releases/qt/5.12/5.12.5/single/qt-everywhere-src-5.12.5.tar.xz || exit 1
     fi
     echo "Extracting Qt 5.12.5..."
-    tar xvf ~/raspi/qt-everywhere-src-5.12.5.tar.xz
+    tar xvf ~/raspi/qt-everywhere-src-5.12.5.tar.xz || exit 1
 else
     echo "~/raspi/qt-everywhere-src-5.12.5 directory exists"
 fi
@@ -92,7 +89,7 @@ echo "Configuring..."
     -release \
     -opengl es2 \
     -device linux-rasp-pi-g++ \
-    -device-option CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf- \
+    -device-option CROSS_COMPILE=/opt/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf- \
     -sysroot ~/raspi/sysroot \
     -opensource \
     -confirm-license \
