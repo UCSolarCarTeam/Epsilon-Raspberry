@@ -69,14 +69,13 @@ chmod 0644 ~/.ssh/authorized_keys
 In that file, paste your ssh-key in.
 You should now be able to `ssh` into the pi without getting a prompt for a password.
 
-. Make sure you have gcc & g++ installed.
-If you don't, install with:
+. Your computer has a few dependencies needed to start the installation, so run
 +
 ```
-sudo apt install build-essential
+sudo ./InstallHostDependencies.sh
 ```
 
-. From here, run the `SetupCompileEnv.sh` script on your desktop.
+. From here, run the `SetupCompileEnv.sh` (_without_ sudo) script on your desktop.
 Setup will take about *_four hours_*, so please make sure you consistent connection to the internet & to the Pi during that time.
 * By default, the script will look for the pi at `pi@raspberrypi.local`. See the `-h` help prompt for info on how to modify this.
 
